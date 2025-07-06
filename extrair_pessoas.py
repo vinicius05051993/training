@@ -1,9 +1,5 @@
 import spacy
 import json
-import sys
-
-import spacy
-import json
 from collections import defaultdict
 
 def extrair_dados(texto):
