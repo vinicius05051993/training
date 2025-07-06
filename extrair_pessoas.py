@@ -2,11 +2,10 @@ import spacy
 import json
 import sys
 
-def extrair_pessoas(texto):
+def extrair_dados(texto):
     nlp = spacy.load("pt_core_news_sm")
     doc = nlp(texto)
-    pessoas = set(ent.text for ent in doc.ents if ent.label_ == "PER")
-    return {"pessoas": list(pessoas)}
+    return {"pessoas": list(doc.ents)}
 
 if __name__ == "__main__":
     texto = """A confeiteira Lexandra Machado estava no quintal de casa quando viu uma montanha de 80 metros de altura deslizando a poucos quilômetros, na manhã de 7 de dezembro de 2024, no povoado de Casquilho de Cima, em Conceição do Pará (MG). O que ela via era o rompimento de uma pilha de rejeitos de uma mineradora.
@@ -19,9 +18,6 @@ if __name__ == "__main__":
 
              O deslizamento em Conceição do Pará atingiu 7 casas e, quatro meses depois, nenhum morador pôde voltar ao povoado. Essa foi a quarta ocorrência envolvendo pilhas desde 2018. Em um dos casos, no município de Godofredo Viana, no Maranhão, uma rodovia ficou interditada por seis dias.
 
-             Anomalia é constatada em pilha de rejeitos em Conceição do Pará — Foto: Corpo de Bombeiros/Divulgação
-             Anomalia é constatada em pilha de rejeitos em Conceição do Pará — Foto: Corpo de Bombeiros/Divulgação
-
              Mais pilhas do que barragens
              Desde 2019, as barragens do tipo a montante -- estruturas nas quais os rejeitos da mineração são depositados em camadas sucessivas -- são proibidas no Brasil, por que estão mais suscetíveis a acidentes.
 
@@ -32,9 +28,6 @@ if __name__ == "__main__":
              Já a Samarco, outra responsável pelo rompimento da barragem em Mariana, filtra e empilha atualmente cerca de 80% dos rejeitos de minério que produz, uma mudança que vem sendo feita desde 2020.
 
              As pilhas são como montanhas de lixo da mineração, formadas pelo material sem valor econômico que resta após a lavagem do minério e a drenagem da água. Já nas barragens, o rejeito é armazenado com água, formando uma espécie de lama. Há, ainda, as pilhas de estéril, formadas principalmente pela areia retirada do solo até se chegar ao minério.
-
-             Pilhas de rejeitos também são chamadas de empilhamento a seco — Foto: Arte g1
-             Pilhas de rejeitos também são chamadas de empilhamento a seco — Foto: Arte g1
 
              De acordo com especialistas ouvidos pelo g1, algumas pilhas que foram licenciadas -- ou que estão em processo de licenciamento no Brasil -- poderão alcançar mais de 200 metros de altura, o que eles consideram um grande risco, principalmente porque essas estruturas não são regulamentadas ou monitoradas como as barragens passaram a ser depois das tragédias em Minas Gerais.
 
@@ -58,15 +51,9 @@ if __name__ == "__main__":
 
              “A pilha rompeu em Conceição do Pará, porque a base não foi preparada adequadamente para aguentar o peso”, disse o especialista, sobre o deslizamento na mineradora Jaguar Mining, que Lexandra observou de dentro de casa.
 
-             Pilha de rejeito que deslizou em Conceição do Pará atingiu sete casas. — Foto: Arte g1
-             Pilha de rejeito que deslizou em Conceição do Pará atingiu sete casas. — Foto: Arte g1
-
              A pilha no povoado tem, atualmente, 80 metros de altura. Isso é mais que o dobro do Cristo Redentor, que tem 35 metros. A área é de aproximadamente 16 hectares, quase o tamanho do estádio Maracanã, que tem 18 hectares. De acordo com a última informação repassada pela Jaguar Mining para a ANM, o desabamento movimentou um volume de cerca de 640 milhões de litros.
 
              Questionada sobre qual a altura e as demais medidas que foram autorizadas no projeto de licenciamento da pilha, a Jaguar Mining respondeu que a estrutura “não tinha atingido sua altura e volume máximos e operava de acordo com licenciamento junto aos órgãos reguladores”.
-
-             Mina Turmalina - Conceição do Pará - pilha de rejeitos — Foto: Roberto Eleotério/ TV Integração
-             Mina Turmalina - Conceição do Pará - pilha de rejeitos — Foto: Roberto Eleotério/ TV Integração
 
              A Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável (Semad), de Minas Gerais, informou que “os aspectos geotécnicos das pilhas extrapolam o escopo do licenciamento ambiental” e que a ANM é a responsável por essa análise técnica.
 
@@ -115,6 +102,6 @@ if __name__ == "__main__":
              Qualquer empreendimento minerário tem que estar comprovadamente adequado aos eventos extremos de chuva;
              É preciso aplicar o princípio da precaução e da prevenção. As mineradoras têm que comprovar de forma transparente que a pilha a ser licenciada é sustentável a longo prazo."""
 
-    print("Uso: python extrair_pessoas.py '"+ texto +"'")
-    resultado = extrair_pessoas(texto)
+    print("Uso: python extrair_dados.py '"+ texto +"'")
+    resultado = extrair_dados(texto)
     print(json.dumps(resultado, ensure_ascii=False, indent=2))
