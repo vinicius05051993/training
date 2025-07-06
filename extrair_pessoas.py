@@ -13,7 +13,7 @@ def extrair_dados(texto):
     # Remover duplicatas
     entidades = {label: list(set(valores)) for label, valores in entidades.items()}
 
-    return json.dumps(entidades, ensure_ascii=False, indent=2)
+    return entidades
 
 if __name__ == "__main__":
     texto = """A confeiteira Lexandra Machado estava no quintal de casa quando viu uma montanha de 80 metros de altura deslizando a poucos quilômetros, na manhã de 7 de dezembro de 2024, no povoado de Casquilho de Cima, em Conceição do Pará (MG). O que ela via era o rompimento de uma pilha de rejeitos de uma mineradora.
