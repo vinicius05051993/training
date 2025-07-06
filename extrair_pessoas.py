@@ -114,9 +114,7 @@ if __name__ == "__main__":
              O processo de licenciamento não pode ser baseado em autodeclarações;
              Qualquer empreendimento minerário tem que estar comprovadamente adequado aos eventos extremos de chuva;
              É preciso aplicar o princípio da precaução e da prevenção. As mineradoras têm que comprovar de forma transparente que a pilha a ser licenciada é sustentável a longo prazo."""
-    if len(sys.argv) < 2:
-        print("Uso: python extrair_pessoas.py '"+ texto +"'")
-        sys.exit(1)
-    texto = sys.argv[1]
+
+    print("Uso: python extrair_pessoas.py '"+ texto +"'")
     resultado = extrair_pessoas(texto)
     print(json.dumps(resultado, ensure_ascii=False, indent=2))

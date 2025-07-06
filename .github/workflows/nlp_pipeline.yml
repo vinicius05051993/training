@@ -28,4 +28,4 @@ jobs:
 
       - name: Executar extração de pessoas
         run: |
-          python extrair_pessoas.py "João da Silva e Maria Oliveira participaram da reunião com o ministro Carlos Souza."
+          python extrair_pessoas.py
