@@ -1,19 +1,12 @@
 import spacy
 import json
-from collections import defaultdict
+import sys
 
 def extrair_dados(texto):
     nlp = spacy.load("pt_core_news_sm")
     doc = nlp(texto)
-
-    entidades = defaultdict(list)
-    for ent in doc.ents:
-        entidades[ent.label_].append(ent.text)
-
-    # Remover duplicatas
-    entidades = {label: list(set(valores)) for label, valores in entidades.items()}
-
-    return entidades
+    pessoas = set(ent.text for ent in  if ent.label_ == "LOC")
+    return {"locais": list(pessoas)}
 
 if __name__ == "__main__":
     texto = """A confeiteira Lexandra Machado estava no quintal de casa quando viu uma montanha de 80 metros de altura deslizando a poucos quilômetros, na manhã de 7 de dezembro de 2024, no povoado de Casquilho de Cima, em Conceição do Pará (MG). O que ela via era o rompimento de uma pilha de rejeitos de uma mineradora.
